@@ -1,0 +1,17 @@
+.*
+release.properties
+javadoc
+!.travis.yml
+!.gitignore
+.classpath
+.project
+.orig
+.settings/**/*
+target/**/*
+*.class
+target
+Thumbs.db
+test-output
+pom-shade.xml
+*.releaseBackup
+*.versionsBackup
