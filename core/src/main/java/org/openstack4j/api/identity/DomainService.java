@@ -7,7 +7,7 @@ import org.openstack4j.model.identity.v3.Domain;
 /**
  * Identity Domain based Operations
  * 
- * @author Sujai SD
+ * @author Abdul
  */
 public interface DomainService extends RestService {
     

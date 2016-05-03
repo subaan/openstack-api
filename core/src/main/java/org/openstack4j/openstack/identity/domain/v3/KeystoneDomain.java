@@ -13,7 +13,7 @@ import org.openstack4j.openstack.identity.domain.KeystoneRole;
  * domain. Users, however, can be associated with multiple projects by granting
  * roles to the user on a project, including projects owned by other domains.
  *
- * @author Sujai SD
+ * @author Abdul
  */
 public class KeystoneDomain implements Domain {
 

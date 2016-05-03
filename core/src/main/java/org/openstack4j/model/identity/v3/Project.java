@@ -9,7 +9,7 @@ import org.openstack4j.model.identity.builder.TenantBuilder;
  * Project Model class use to group/isolate resources and/or identity objects
  * Project is the new name for tenants in Keystone v3.
  * 
- * @author Sujai SD
+ * @author Abdul
  */
 public interface Project extends ModelEntity , Buildable<ProjectBuilder>{
     

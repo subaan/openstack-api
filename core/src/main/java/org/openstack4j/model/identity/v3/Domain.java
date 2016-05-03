@@ -8,7 +8,7 @@ import org.openstack4j.model.ModelEntity;
  * Represents an OpenStack Identity Version 3 Domain. Domains represent collections of users, groups, and projects. Each is owned by exactly one domain. Users, however, can be associated with multiple projects by granting roles to the user on a project, including projects owned by other domains. 
  * 
  * 
- * @author Sujai SD
+ * @author Abdul
  */
 public interface Domain extends ModelEntity {
     
