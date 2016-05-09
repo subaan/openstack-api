@@ -2,8 +2,11 @@ package org.openstack4j.openstack.networking.domain;
 
 import static com.google.common.base.Objects.toStringHelper;
 
+import java.util.List;
+
 import org.openstack4j.model.network.NetQuota;
 import org.openstack4j.model.network.builder.NetQuotaBuilder;
+import org.openstack4j.openstack.common.ListResult;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,17 +22,20 @@ public class NeutronNetQuota implements NetQuota {
 
     private static final long serialVersionUID = 1L;
     
-    
+    @JsonProperty
     private int subnet;
-    
+    @JsonProperty
     private int router;
-    
+    @JsonProperty
     private int port;
-    
+    @JsonProperty
     private int network;
-    
     @JsonProperty("floatingip")
     private int floatingIp;
+    @JsonProperty("security_group")
+    private int securityGroup;
+    @JsonProperty("security_group_rule")
+    private int securityGroupRule;
 
     public static NetQuotaBuilder builder() {
         return new NetQuotaConcreteBuilder();
@@ -65,12 +71,23 @@ public class NeutronNetQuota implements NetQuota {
     public int getFloatingIP() {
         return floatingIp;
     }
-    
+
+    @Override
+    public int getSecurityGroup() {
+        return securityGroup;
+    }
+
+    @Override
+    public int getSecurityGroupRule() {
+        return securityGroupRule;
+    }
+
     @Override
     public String toString() {
         return toStringHelper(this)
                 .add("subnet", subnet).add("router", router).add("port", port)
                 .add("network", network).add("floatingIp", floatingIp)
+                .add("securityGroup", securityGroup).add("securityGroupRule", securityGroupRule)
                 .toString();
     }
 
@@ -126,7 +143,31 @@ public class NeutronNetQuota implements NetQuota {
             model.floatingIp = floatingIP;
             return this;
         }
-        
+
+        @Override
+        public NetQuotaBuilder securityGroup(int securityGroup) {
+            model.securityGroup = securityGroup;
+            return this;
+        }
+
+        @Override
+        public NetQuotaBuilder securityGroupRule(int securityGroupRule) {
+            model.securityGroupRule = securityGroupRule;
+            return this;
+        }   
+    }
+    
+    public static class NeutronNetQuotas extends ListResult<NeutronNetQuota> {
+
+		private static final long serialVersionUID = 1L;
+		
+		@JsonProperty("quotas")
+    	private List<NeutronNetQuota> quotas;
+    	
+		@Override
+		protected List<NeutronNetQuota> value() {
+			return quotas;
+		}
     }
     
 }
