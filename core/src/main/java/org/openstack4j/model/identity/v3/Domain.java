@@ -2,7 +2,10 @@
 
 package org.openstack4j.model.identity.v3;
 
+import java.util.Map;
+import org.openstack4j.common.Buildable;
 import org.openstack4j.model.ModelEntity;
+import org.openstack4j.model.identity.v3.builder.DomainBuilder;
 
 /**
  * Represents an OpenStack Identity Version 3 Domain. Domains represent collections of users, groups, and projects. Each is owned by exactly one domain. Users, however, can be associated with multiple projects by granting roles to the user on a project, including projects owned by other domains. 
@@ -10,7 +13,7 @@ import org.openstack4j.model.ModelEntity;
  * 
  * @author Abdul
  */
-public interface Domain extends ModelEntity {
+public interface Domain extends ModelEntity, Buildable<DomainBuilder> {
     
     /**
      * @return the unique identifier for this domain
@@ -28,7 +31,12 @@ public interface Domain extends ModelEntity {
     String getDescription();
     
     /**
-     * @return if the domain is enabled
+     * @return the Links of the domain
      */
-    String getEnabled();
+    Map<String, String> getLinks();
+
+    /**
+     * @return if domain is enabled
+     */
+    boolean isEnabled();
 }

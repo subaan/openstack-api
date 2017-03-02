@@ -26,6 +26,7 @@ public final class ClientConstants
 	public static final String PATH_ROLES = "/roles";
 	public static final String PATH_EXTENSIONS = "/extensions";
 	public static final String URI_SEP = "/";
+        public static final String PATH_DOMAINS = "/domains";
 
 	
 }

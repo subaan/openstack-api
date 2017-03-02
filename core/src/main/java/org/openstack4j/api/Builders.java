@@ -22,6 +22,7 @@ import org.openstack4j.model.identity.builder.ServiceBuilder;
 import org.openstack4j.model.identity.builder.ServiceEndpointBuilder;
 import org.openstack4j.model.identity.builder.TenantBuilder;
 import org.openstack4j.model.identity.builder.UserBuilder;
+import org.openstack4j.model.identity.v3.builder.DomainBuilder;
 import org.openstack4j.model.image.builder.ImageBuilder;
 import org.openstack4j.model.network.builder.ExtraDhcpOptBuilder;
 import org.openstack4j.model.network.builder.NetFloatingIPBuilder;
@@ -67,6 +68,7 @@ import org.openstack4j.openstack.networking.domain.NeutronSubnet;
 import org.openstack4j.openstack.storage.block.domain.CinderQuotaSet;
 import org.openstack4j.openstack.storage.block.domain.CinderVolume;
 import org.openstack4j.openstack.storage.block.domain.CinderVolumeSnapshot;
+import org.openstack4j.openstack.identity.domain.v3.KeystoneDomain;
 
 /**
  * A utility class to quickly access available Builders within the OpenStack API
@@ -339,6 +341,16 @@ public class Builders {
      */
     public static org.openstack4j.model.storage.block.builder.QuotaSetBuilder volumeQuota() {
         return CinderQuotaSet.builder();
+    }
+    
+    
+    /**
+     * The builder to create a Domain.
+     *
+     * @return the domain builder
+     */
+    public static DomainBuilder domain() {
+        return KeystoneDomain.builder();
     }
 
 
