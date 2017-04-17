@@ -29,6 +29,15 @@ public interface UserService {
      */
     List<? extends User> getByName(String userName);
     
+    /**API modified by @ Abdul
+     * Gets detailed information about a specified user by name
+     *
+     * @param userName the user name
+     * @param domainId the domain id
+     * @return List of User
+     */
+    List<? extends User> getByNameAndDomain(String userName, String domainId);
+    
     /**
      * Gets the detailed User information by name
      * 

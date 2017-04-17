@@ -1,7 +1,9 @@
 package org.openstack4j.openstack.identity.internal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openstack4j.api.Apis;
 import org.openstack4j.api.identity.UserService;
 import org.openstack4j.model.compute.ActionResponse;
@@ -107,6 +109,16 @@ public class UserServiceImpl extends BaseOpenStackService implements UserService
 	public List<? extends User> getByName(String userName) {
 	    checkNotNull(userName);
 	    return get(Users.class, "/users").param("name", userName).execute().getList();   
+	}
+        
+        @Override
+	public List<? extends User> getByNameAndDomain(String userName, String domainId) {
+	    checkNotNull(userName);
+	    checkNotNull(domainId);
+            Map<String, String> objects = new HashMap<String, String>();
+            objects.put("domain_id", domainId);
+            objects.put("name", userName);
+	    return get(Users.class, "/users").params(objects).execute().getList();   
 	}
         
         @Override

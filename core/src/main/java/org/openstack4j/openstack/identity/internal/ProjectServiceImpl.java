@@ -7,7 +7,9 @@
 package org.openstack4j.openstack.identity.internal;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openstack4j.api.identity.ProjectService;
 import org.openstack4j.api.identity.TenantService;
 import static org.openstack4j.core.transport.ClientConstants.PATH_TENANTS;
@@ -39,6 +41,16 @@ public class ProjectServiceImpl extends BaseOpenStackService implements ProjectS
         @Override
 	public List<? extends Project> getByName(String projectName) {
 		return get(KeystoneProject.Projects.class, uri("/projects")).param("name", projectName).execute().getList();
+	}
+        
+        @Override
+	public List<? extends Project> getByNameAndDomain(String projectName, String domainId) {
+            checkNotNull(projectName);
+	    checkNotNull(domainId);
+            Map<String, String> objects = new HashMap<String, String>();
+            objects.put("domain_id", domainId);
+            objects.put("name", projectName);
+		return get(KeystoneProject.Projects.class, uri("/projects")).params(objects).execute().getList();
 	}
         
         @Override

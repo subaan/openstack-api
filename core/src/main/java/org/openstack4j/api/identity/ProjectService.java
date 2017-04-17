@@ -43,6 +43,15 @@ public interface ProjectService extends RestService {
 	List<? extends Project> getByName(String projectName);
         
         /**
+	 * Gets detailed information about a specified project by Name
+	 *
+	 * @param projectName the project name
+	 * @param domainId the domain id
+	 * @return List of Projects
+	 */
+	List<? extends Project> getByNameAndDomain(String projectName, String domainId);
+        
+        /**
 	 * Creates a new Project
 	 *
 	 * @param project the project to create
